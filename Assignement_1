@@ -1,0 +1,39 @@
+
+public class MatrixReconstruction {
+    public static void main(String[] args) {
+        int[] rowSum = {3, 8};
+        int[] colSum = {4, 7};
+        int[][] result1 = reconstructMatrix(rowSum, colSum);
+        printMatrix(result1);
+
+        int[] rowSum2 = {5, 7, 10};
+        int[] colSum2 = {8, 6, 8};
+        int[][] result2 = reconstructMatrix(rowSum2, colSum2);
+        printMatrix(result2);
+    }
+
+    public static int[][] reconstructMatrix(int[] rowSum, int[] colSum) {
+        int rows = rowSum.length;
+        int cols = colSum.length;
+        int[][] matrix = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = Math.min(rowSum[i], colSum[j]);
+                rowSum[i] -= matrix[i][j];
+                colSum[j] -= matrix[i][j];
+            }
+        }
+
+        return matrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
