@@ -1,0 +1,44 @@
+body{background: rgb(239, 54, 54)}
+
+.first {
+    width: 33.33%;
+    height: 100%;
+}
+#F {
+
+    background: rgb(223, 132, 13);
+
+
+}
+#S {
+    
+    background: rgb(223, 132, 13);
+
+
+}
+#T {
+    
+    background: rgb(223, 132, 13);
+
+}
+
+#leftbox {
+    float: left;
+    background: yellow;
+    width: 33.33%;
+    height: 100%;
+}
+
+#middlebox {
+    float: left;
+    background: Green;
+    width: 33.33%;
+    height: 100%;
+}
+
+#rightbox {
+    float: right;
+    background: blue;
+    width: 33.33%;
+    height: 100%;
+}
