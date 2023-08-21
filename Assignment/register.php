@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username_err = "Please enter a username.";
   } else {
     $username = trim($_POST["username"]);
-    if (!ctype_alnum(str_replace(array("@", "-", "_"), "", $username))) {
-      $username_err = "Username can only contain letters, numbers and symbols like '@', '_', or '-'.";
+    if (!preg_match('/^[a-zA-Z0-9@_]{8,12}$/', $username)) {
+      $username_err = "Username can only contain 8-12 letters and numbers ";
     } else {
       # Prepare a select statement
       $sql = "SELECT id FROM users WHERE username = ?";
@@ -87,8 +87,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password_err = "Please enter a password.";
   } else {
     $password = trim($_POST["password"]);
-    if (strlen($password) < 8) {
-      $password_err = "Password must contain at least 8 or more characters.";
+
+    if (strlen($password) < 8 || strlen($password) > 12) {
+        $password_err = "Password must be between 8 and 12 characters.";
+    } elseif (!preg_match('/\d/', $password) || !preg_match('/[!@#$%^&*()\-_=+{};:,<.>]/', $password) || !preg_match('/[A-Z]/', $password)) {
+        $password_err = "Password must contain at least one uppercase letter, one numeric digit, and one special character.";
+
     }
   }
 
