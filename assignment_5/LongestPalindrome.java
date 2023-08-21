@@ -1,11 +1,11 @@
 public class LongestPalindrome {
     public static String longestPalindrome(String s) {
         int n = s.length();
-        boolean[][] dp = new boolean[n][n];
-        int start = 0;
-        int maxLength = 1;
+        boolean[][] dp = new boolean[n][n];//Create a 2darray to store wether substring are palindrome
+        int start = 0;//starting index of longest palindrome
+        int maxLength = 1; //to store length of longest palindrome
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) { //Initialie the main diagonal with true values ()
             dp[i][i] = true;
         }
 
