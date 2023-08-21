@@ -17,7 +17,7 @@ const data = [
           { type: "li", text: "item 3" },
           { type: "li", text: "item 4" },
         ],
-      },a
+      },
     ],
   },
 ];
