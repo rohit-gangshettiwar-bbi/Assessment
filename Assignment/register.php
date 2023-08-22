@@ -52,6 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $email_err = "Please enter a valid email address.";
+    }else if (substr($email, -10) !== "@gmail.com") {
+      $email_err = "Only Gmail addresses are allowed.";
     } else {
       # Prepare a select statement
       $sql = "SELECT id FROM users WHERE email = ?";
