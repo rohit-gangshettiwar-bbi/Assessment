@@ -1,0 +1,15 @@
+Que. Display customer Id where OrderDate is 04
+=>
+SELECT CustomerID,OrderDate FROM Orders WHERE OrderDate LIKE '%04%';
+
+Result:
+Number of Records: 6
+CustomerID	OrderDate
+90	1996-07-04
+7	1996-09-04
+58	1996-10-04
+63	1996-11-04
+62	1996-12-04
+16	1997-02-04
+
+Que. Display customers name and shipper name where orderDate is 04
