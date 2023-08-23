@@ -1,3 +1,4 @@
+let countryData=[];
 const searchForm = document.getElementById('search-form');
 
 const searchInput = document.getElementById('search-input');
@@ -46,32 +47,35 @@ searchForm.addEventListener('submit', async (e) => {
 
  
 
-        data.forEach(country => {
-
-            const countryCard = document.createElement('div');
-
-            countryCard.classList.add('country-card');
-
-            countryCard.innerHTML = `
-
-                <img src="${country.flags.png}" alt="${country.name.common}">
-
-                <h2>${country.name.common}</h2>
-
-                <p>Capital: ${country.capital}</p>
-
-                <p>Population: ${country.population}</p>
-
-            `;
-
+        if (Array.isArray(data) && data.length > 0) {
+            data.forEach(country => {
+                const countryCard = createCountryCard(country);
+                countryContainer.appendChild(countryCard);
+            });
+        } else if (!Array.isArray(data) && data.hasOwnProperty('name')) {
+            const countryCard = createCountryCard(data);
             countryContainer.appendChild(countryCard);
-
-        });
+        } else {
+            displayErrorMessage();
+        }
 
     } catch (error) {
-
         console.error('Error fetching data:', error);
-
     }
-
 });
+
+function createCountryCard(country) {
+    const countryCard = document.createElement('div');
+    countryCard.classList.add('country-card');
+    countryCard.innerHTML = `
+        <img src="${country.flags.png}" alt="${country.name.common}">
+        <h2>${country.name.common}</h2>
+        <p>Capital: ${country.capital}</p>
+        <p>Population: ${country.population}</p>
+    `;
+    return countryCard;
+}
+
+function displayErrorMessage() {
+    countryContainer.innerHTML = '<p class="error-message">No country or currency found. Please try again.</p>';
+}
