@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Country Information Using Restcountries API</title>
+</head>
+<body>
+    <nav>
+  
+        <h1>Country Information</h1>
+    </nav>
+    <div class="top">
+        <form  class="search"   id="search-form">
+
+            
+
+                     
+            
+            <input type="text" id="search-input" placeholder="Search for a country ...">
+
+            <label for="Search-Filter">Choose a Filter:</label>
+
+            <select id="search-option">
+            <option value="name">Name</option>
+            <option value="currency">Currency</option>
+            <option value="lang">Language</option>
+          
+
+            </select>
+            
+
+            <button type="submit">Search</button>
+            <button id="export-button">Export </button>
+        </form>
+       
+    </div>
+    
+    <div id="country-container"></div>
+    <script src="Rest_API_ASS.js"></script>
+</body>
+</html>
